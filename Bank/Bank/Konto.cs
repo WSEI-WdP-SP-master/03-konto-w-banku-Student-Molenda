@@ -15,7 +15,7 @@ namespace Bank
 
         // --- ctor's
 
-        //private Konto() { }
+        //public Konto() { }
 
         public Konto(string klient, decimal bilansNaStart = 0)
         {
@@ -29,6 +29,9 @@ namespace Bank
         // --- metody
         public void Wplata( decimal kwota )
         {
+            if (this.Zablokowane)
+                throw new ArgumentException("konto zablokowane");
+
             if (kwota < 0)
                 throw new ArgumentOutOfRangeException("ujemna kwota");
 

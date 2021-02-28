@@ -158,5 +158,16 @@ namespace BankUnitTest
             k.OdblokujKonto();
             Assert.IsTrue(!k.Zablokowane);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void WplataGdyKontoZablokowane_Wyjatek_ArgumentException()
+        {
+            var k = new Konto("xxx");
+            k.BlokujKonto();
+
+            k.Wplata(100);
+        }
+
     }
 }
