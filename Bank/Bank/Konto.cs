@@ -20,7 +20,10 @@ namespace Bank
         public Konto(string klient, decimal bilansNaStart = 0)
         {
             this.klient = klient;
-            bilans = bilansNaStart;
+            if (bilansNaStart < 0)
+                bilans = 0;
+            else
+                bilans = bilansNaStart;
         }
 
         // --- metody
